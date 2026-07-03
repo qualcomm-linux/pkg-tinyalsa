@@ -1,5 +1,9 @@
-tinyalsa (1.0.0-1) UNRELEASED; urgency=medium
+tinyalsa (2.0.0-1) UNRELEASED; urgency=medium
 
+  [ Sairamreddy Bojja ]
   * Initial release
 
- -- Sairamreddy Bojja <sbojja@qti.qualcomm.com>  Fri, 03 Jul 2026 15:26:18 +0530
+  [ GitHub Service Bot ]
+  * New upstream release
+
+ -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Fri, 03 Jul 2026 10:00:44 +0000
