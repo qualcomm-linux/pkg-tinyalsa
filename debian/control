@@ -7,16 +7,17 @@ Uploaders:
 Build-Depends:
  debhelper-compat (= 13),
  libglib2.0-dev,
- meson
+ meson,
 Vcs-Git: https://github.com/qualcomm-linux/pkg-tinyalsa.git
 Vcs-Browser: https://github.com/qualcomm-linux/pkg-tinyalsa
 Standards-Version: 4.6.2
 
 Package: tinyalsa
 Architecture: any
-Depends: libtinyalsa2 (= ${binary:Version}),
-         ${misc:Depends},
-         ${shlibs:Depends}
+Depends:
+ libtinyalsa2 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends},
 Description: utilities to interface with ALSA
  TinyALSA is a lightweight interface to ALSA in the Linux kernel.
  .
@@ -32,8 +33,9 @@ Package: libtinyalsa2
 Architecture: any
 Multi-Arch: same
 Section: libs
-Depends: ${misc:Depends},
-         ${shlibs:Depends}
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
 Description: small library to interface with ALSA (runtime library)
  The TinyALSA library is a lightweight, bare metal version of the ALSA library.
  .
@@ -51,9 +53,10 @@ Package: libtinyalsa-dev
 Architecture: any
 Multi-Arch: same
 Section: libdevel
-Depends: libtinyalsa2 (= ${binary:Version}),
-         ${misc:Depends},
-         ${shlibs:Depends}
+Depends:
+ libtinyalsa2 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends},
 Description: small library to interface with ALSA (development files)
  The TinyALSA library is a lightweight, bare metal version of the ALSA library.
  .
