@@ -1,3 +1,9 @@
+tinyalsa (2.0.0-0qli+staging1~bpo13+1) UNRELEASED; urgency=medium
+
+  * Rebuild for trixie.
+
+ -- Agathe Porte <agathe.porte@oss.qualcomm.com>  Mon, 06 Jul 2026 16:30:01 +0200
+
 tinyalsa (2.0.0-0qli+staging1~) UNRELEASED; urgency=medium
 
   * Initial release
