@@ -4,10 +4,13 @@ Priority: optional
 Maintainer: Taylor Holberton <taylorcholberton@gmail.com>
 Uploaders:
  Sairamreddy Bojja <sbojja@qti.qualcomm.com>
-Build-Depends: debhelper (>=7.0.50), doxygen
+Build-Depends:
+ debhelper-compat (= 13),
+ libglib2.0-dev,
+ meson
 Vcs-Git: git://github.com/tinyalsa/tinyalsa
 Vcs-Browser: https://github.com/tinyalsa/tinyalsa
-Standards-Version: 3.9.7
+Standards-Version: 4.6.2
 
 Package: tinyalsa
 Architecture: any
