@@ -18,8 +18,16 @@ Section: sound
 Depends: libtinyalsa2 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
-Description: A collection of small programs to interface with ALSA in the Linux kernel.
+Description: utilities to interface with ALSA
  TinyALSA is a lightweight interface to ALSA in the Linux kernel.
+ .
+ The aims are:
+ .
+  * Provide a basic pcm and mixer API.
+  * If it's not absolutely needed, don't add it to the API.
+  * Avoid supporting complex and unnecessary operations, that could be dealt
+    with at a higher level.
+  * Provide comprehensive documentation.
 
 Package: libtinyalsa2
 Architecture: any
@@ -27,8 +35,18 @@ Multi-Arch: same
 Section: libs
 Depends: ${misc:Depends},
          ${shlibs:Depends}
-Description: A small C library for interfacing with ALSA in the Linux kernel.
+Description: small library to interface with ALSA (runtime library)
  The TinyALSA library is a lightweight, bare metal version of the ALSA library.
+ .
+ The aims are:
+ .
+  * Provide a basic pcm and mixer API.
+  * If it's not absolutely needed, don't add it to the API.
+  * Avoid supporting complex and unnecessary operations, that could be dealt
+    with at a higher level.
+  * Provide comprehensive documentation.
+ .
+ This package provides the runtime library.
 
 Package: libtinyalsa-dev
 Architecture: any
@@ -37,5 +55,15 @@ Section: libdevel
 Depends: libtinyalsa2,
          ${misc:Depends},
          ${shlibs:Depends}
-Description: Development files for the TinyALSA library.
+Description: small library to interface with ALSA (development files)
  The TinyALSA library is a lightweight, bare metal version of the ALSA library.
+ .
+ The aims are:
+ .
+  * Provide a basic pcm and mixer API.
+  * If it's not absolutely needed, don't add it to the API.
+  * Avoid supporting complex and unnecessary operations, that could be dealt
+    with at a higher level.
+  * Provide comprehensive documentation.
+ .
+ This package provides files necessary to develop programs using the library.
