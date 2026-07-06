@@ -1,33 +1,19 @@
 #!/usr/bin/make -f
-# See debhelper(7) (uncomment to enable)
-# output every command that modifies files on the build system.
-#DH_VERBOSE = 1
 
-DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
-export DEB_HOST_MULTIARCH
-
-PREPROCESS_FILES := $(wildcard debian/*.in)
-
-$(PREPROCESS_FILES:.in=): %: %.in
-	sed 's,/@DEB_HOST_MULTIARCH@,$(DEB_HOST_MULTIARCH:%=/%),g' $< > $@
-
-.PHONY: override_dh_auto_clean
-override_dh_auto_clean:
-	dh_auto_clean
-	rm -rf $(PREPROCESS_FILES:.in=)
-
-.PHONY: override_dh_auto_install
-override_dh_auto_install: $(PREPROCESS_FILES:.in=)
-	dh_auto_install -- PREFIX=/usr
-
-.PHONY: override_dh_auto_test
-override_dh_auto_test:
+# See debhelper(7) (uncomment to enable).
+# Output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
 
 
-.PHONY: override_dh_strip
-override_dh_strip:
-	dh_strip --dbg-package=libtinyalsa-dbg
+# See FEATURE AREAS in dpkg-buildflags(1).
+#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# See ENVIRONMENT in dpkg-buildflags(1).
+# Package maintainers to append CFLAGS.
+# Package maintainers to append LDFLAGS.
+#export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
+export DEB_CFLAGS_MAINT_APPEND  = -DTINYALSA_USES_PLUGINS
 
 %:
-	dh $@
-
+	dh $@ --buildsystem=meson
