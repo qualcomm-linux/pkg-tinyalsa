@@ -33,6 +33,7 @@
 #include <poll.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <pthread.h>
 #include <sys/types.h>
 #include <time.h>
 
@@ -124,7 +125,10 @@ struct pcm_plugin_ops {
     int (*prepare) (struct pcm_plugin *plugin);
     /** Start data transfer from/to the plugin */
     int (*start) (struct pcm_plugin *plugin);
-    /** Drop pcm frames */
+    /** Signal the plugin to drain PCM */
+    int (*drain) (struct pcm_plugin *plugin);
+    /** Stop a PCM dropping pending frames if drain() is NOT called.
+     *  Stop a PCM preserving pending frames if drain() is called. */
     int (*drop) (struct pcm_plugin *plugin);
     /** Any custom or alsa specific ioctl implementation */
     int (*ioctl) (struct pcm_plugin *plugin,
@@ -219,6 +223,7 @@ struct mixer_plugin {
 
     struct snd_control *controls;
     unsigned int num_controls;
+    pthread_mutex_t mutex;
 };
 
 struct snd_value_enum {
