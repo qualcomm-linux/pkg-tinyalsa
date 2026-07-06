@@ -1,9 +1,8 @@
 Source: tinyalsa
 Section: sound
 Priority: optional
-Maintainer: Taylor Holberton <taylorcholberton@gmail.com>
+Maintainer: Sairamreddy Bojja <sbojja@qti.qualcomm.com>
 Uploaders:
- Sairamreddy Bojja <sbojja@qti.qualcomm.com>,
  Agathe Porte <agathe.porte@oss.qualcomm.com>,
 Build-Depends:
  debhelper-compat (= 13),
