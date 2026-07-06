@@ -8,8 +8,8 @@ Build-Depends:
  debhelper-compat (= 13),
  libglib2.0-dev,
  meson
-Vcs-Git: git://github.com/tinyalsa/tinyalsa
-Vcs-Browser: https://github.com/tinyalsa/tinyalsa
+Vcs-Git: https://github.com/qualcomm-linux/pkg-tinyalsa.git
+Vcs-Browser: https://github.com/qualcomm-linux/pkg-tinyalsa
 Standards-Version: 4.6.2
 
 Package: tinyalsa
