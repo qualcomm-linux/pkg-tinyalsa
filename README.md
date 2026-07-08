@@ -101,3 +101,5 @@ bazel test //:tinyalsa_tests --test_output=all \
 bazel coverage //:tinyalsa_tests --combined_report=lcov --test_output=all
 genhtml bazel-out/_coverage/_coverage_report.dat -o tinyalsa_tests_coverage
 ```
+## License
+pkg-tinyalsa (tinyalsa) is licensed under the BSD-3-Clause. Check out the [LICENSE](LICENSE) for more details.
