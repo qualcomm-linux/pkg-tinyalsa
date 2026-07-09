@@ -1,8 +1,9 @@
-tinyalsa (2.0.0+git20241128-0qli+staging1~bpo13+1~) UNRELEASED; urgency=medium
+tinyalsa (2.0.0+git20241128-0qli+staging1~bpo13+1) trixie; urgency=medium
 
+  [ Agathe Porte ]
   * Rebuild for trixie.
 
- -- Agathe Porte <agathe.porte@oss.qualcomm.com>  Thu, 09 Jul 2026 15:03:38 +0200
+ -- root <root@d4ab31b482d1>  Thu, 09 Jul 2026 13:09:44 +0000
 
 tinyalsa (2.0.0+git20241128-0qli+staging1) forky; urgency=medium
 
