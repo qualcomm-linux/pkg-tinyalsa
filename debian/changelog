@@ -1,5 +1,6 @@
-tinyalsa (2.0.0+git20241128-0qli+staging1~) UNRELEASED; urgency=medium
+tinyalsa (2.0.0+git20241128-0qli+staging1) forky; urgency=medium
 
+  [ Agathe Porte ]
   * Initial release
 
- -- Agathe Porte <agathe.porte@oss.qualcomm.com>  Mon, 06 Jul 2026 15:22:17 +0200
+ -- root <root@5cc73226013f>  Thu, 09 Jul 2026 09:29:26 +0000
