@@ -40,6 +40,7 @@
 
 #include <sys/ioctl.h>
 #include <linux/ioctl.h>
+#include <time.h>
 #include <sound/asound.h>
 #include <tinyalsa/asoundlib.h>
 #include <tinyalsa/plugin.h>
@@ -153,9 +154,12 @@ static int pcm_plug_info(struct pcm_plug_data *plug_data,
         return ret;
     }
 
-    strncpy((char *)info->id, name, sizeof(info->id));
-    strncpy((char *)info->name, name, sizeof(info->name));
-    strncpy((char *)info->subname, name, sizeof(info->subname));
+    strncpy((char *)info->id, name, sizeof(info->id) - 1);
+    ((char *)info->id)[sizeof(info->id) - 1] = '\0';
+    strncpy((char *)info->name, name, sizeof(info->name) - 1);
+    ((char *)info->name)[sizeof(info->name) - 1] = '\0';
+    strncpy((char *)info->subname, name, sizeof(info->subname) - 1);
+    ((char *)info->subname)[sizeof(info->subname) - 1] = '\0';
 
     info->subdevices_count = 1;
 
@@ -559,7 +563,8 @@ static int pcm_plug_readi_frames(struct pcm_plug_data *plug_data,
 {
     struct pcm_plugin *plugin = plug_data->plugin;
 
-    if (plugin->state != PCM_PLUG_STATE_RUNNING)
+    if (plugin->state != PCM_PLUG_STATE_PREPARED &&
+        plugin->state != PCM_PLUG_STATE_RUNNING)
         return -EBADFD;
 
     return plug_data->ops->readi_frames(plugin, x);
@@ -618,6 +623,16 @@ static int pcm_plug_drop(struct pcm_plug_data *plug_data)
     return rc;
 }
 
+static int pcm_plug_drain(struct pcm_plug_data *plug_data)
+{
+    struct pcm_plugin *plugin = plug_data->plugin;
+
+    if (plugin->state != PCM_PLUG_STATE_RUNNING)
+        return -EBADFD;
+
+    return plug_data->ops->drain(plugin);
+}
+
 static int pcm_plug_ioctl(void *data, unsigned int cmd, ...)
 {
     struct pcm_plug_data *plug_data = data;
@@ -654,6 +669,9 @@ static int pcm_plug_ioctl(void *data, unsigned int cmd, ...)
         break;
     case SNDRV_PCM_IOCTL_START:
         ret = pcm_plug_start(plug_data);
+        break;
+    case SNDRV_PCM_IOCTL_DRAIN:
+        ret = pcm_plug_drain(plug_data);
         break;
     case SNDRV_PCM_IOCTL_DROP:
         ret = pcm_plug_drop(plug_data);

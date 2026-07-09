@@ -116,8 +116,8 @@
  */
 #define PCM_STATE_RUNNING 0x03
 
-/** For inputs, this means an overrun occured.
- * For outputs, this means an underrun occured.
+/** For inputs, this means an overrun occurred.
+ * For outputs, this means an underrun occurred.
  */
 #define PCM_STATE_XRUN 0x04
 
@@ -178,6 +178,10 @@ enum pcm_format {
     PCM_FORMAT_S24_3BE,
     /** Signed, 32-bit, big endian */
     PCM_FORMAT_S32_BE,
+    /** 32-bit float, little endian */
+    PCM_FORMAT_FLOAT_LE,
+    /** 32-bit float, big endian */
+    PCM_FORMAT_FLOAT_BE,
     /** Max of the enumeration list, not an actual format. */
     PCM_FORMAT_MAX
 };
@@ -213,16 +217,16 @@ struct pcm_config {
      * silence_size      : 0
      */
     /** The minimum number of frames required to start the PCM */
-    unsigned int start_threshold;
+    unsigned long start_threshold;
     /** The minimum number of frames required to stop the PCM */
-    unsigned int stop_threshold;
+    unsigned long stop_threshold;
     /** The minimum number of frames to silence the PCM */
-    unsigned int silence_threshold;
+    unsigned long silence_threshold;
     /** The number of frames to overwrite the playback buffer when the playback underrun is greater
      * than the silence threshold */
-    unsigned int silence_size;
+    unsigned long silence_size;
 
-    unsigned int avail_min;
+    unsigned long avail_min;
 };
 
 /** Enumeration of a PCM's hardware parameters.
@@ -356,6 +360,8 @@ int pcm_unlink(struct pcm *pcm);
 int pcm_prepare(struct pcm *pcm);
 
 int pcm_start(struct pcm *pcm);
+
+int pcm_drain(struct pcm *pcm);
 
 int pcm_stop(struct pcm *pcm);
 
