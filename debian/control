@@ -1,4 +1,5 @@
 Source: tinyalsa
+Homepage: https://github.com/tinyalsa/tinyalsa
 Section: sound
 Maintainer: Sairamreddy Bojja <sbojja@qti.qualcomm.com>
 Uploaders:
