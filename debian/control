@@ -1,6 +1,5 @@
 Source: tinyalsa
 Section: sound
-Priority: optional
 Maintainer: Sairamreddy Bojja <sbojja@qti.qualcomm.com>
 Uploaders:
  Agathe Porte <agathe.porte@oss.qualcomm.com>,
