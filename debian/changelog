@@ -1,8 +1,9 @@
-tinyalsa (2.0.0+git20241128-0qli+staging3~) UNRELEASED; urgency=medium
+tinyalsa (2.0.0+git20241128-0qli1~) UNRELEASED; urgency=medium
 
-  * Unreleased changes
+  * Rebuild for QLI.
+  * d/gbp.conf: Update for QLI branch.
 
- -- Debusine Action Bot <noreply@bot.invalid>  Tue, 08 Sep 2026 10:41:14 +0000
+ -- Lukas Märdian <lukas.maerdian@oss.qualcomm.com>  Tue, 08 Sep 2026 12:49:11 +0200
 
 tinyalsa (2.0.0+git20241128-0qli+staging2) forky; urgency=medium
 
