@@ -1,6 +1,5 @@
 libtinyalsa.so.2 libtinyalsa2 #MINVER#
 * Build-Depends-Package: libtinyalsa-dev
- hw_ops@Base 2.0.0
  mixer_add_new_ctls@Base 2.0.0
  mixer_close@Base 2.0.0
  mixer_consume_event@Base 2.0.0
@@ -84,7 +83,6 @@ libtinyalsa.so.2 libtinyalsa2 #MINVER#
  pcm_wait@Base 2.0.0
  pcm_write@Base 2.0.0
  pcm_writei@Base 2.0.0
- plug_ops@Base 2.0.0
  snd_utils_close_dev_node@Base 2.0.0
  snd_utils_get_int@Base 2.0.0
  snd_utils_get_node_type@Base 2.0.0
