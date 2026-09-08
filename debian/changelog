@@ -1,3 +1,9 @@
+tinyalsa (2.0.0+git20241128-0qli1~bpo13+1~) UNRELEASED; urgency=medium
+
+  * Rebuild for trixie QLI.
+
+ -- Lukas Märdian <lukas.maerdian@oss.qualcomm.com>  Tue, 08 Sep 2026 14:13:23 +0200
+
 tinyalsa (2.0.0+git20241128-0qli+staging2) forky; urgency=medium
 
   [ Lukas Märdian ]
@@ -22,7 +28,7 @@ tinyalsa (2.0.0+git20241128-0qli+staging1~bpo13+2~) UNRELEASED; urgency=medium
 
   * Unreleased changes
 
- -- Debusine Action Bot <noreply@bot.invalid>   Thu, 09 Jul 2026 13:16:59 +0000
+ -- Debusine Action Bot <noreply@bot.invalid>  Thu, 09 Jul 2026 13:16:59 +0000
 
 tinyalsa (2.0.0+git20241128-0qli+staging1~bpo13+1) trixie; urgency=medium
 
