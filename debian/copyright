@@ -1,15 +1,50 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: tinyalsa
+Upstream-Contact: https://github.com/tinyalsa/tinyalsa/issues/new
 Source: https://github.com/tinyalsa/tinyalsa
 
 Files: *
-Copyright: 2016 Simon Wilson
+Copyright: 2016, Simon Wilson <ksattic@gmail.com>
+           Qualcomm Technologies, Inc. and/or its subsidiaries
 License: BSD-3-Clause
 
+Files: BUILD
+       NOTICE
+       examples/plugins/sample_mixer_plugin.c
+       examples/plugins/sample_pcm_plugin.c
+       examples/sndcardparser/sample_sndcardparser.c
+       include/tinyalsa/asoundlib.h
+       include/tinyalsa/interval.h
+       include/tinyalsa/limits.h
+       include/tinyalsa/mixer.h
+       include/tinyalsa/pcm.h
+       include/tinyalsa/plugin.h
+       include/tinyalsa/version.h
+       src/mixer.c
+       src/mixer_hw.c
+       src/mixer_io.h
+       src/mixer_plugin.c
+       src/pcm.c
+       src/pcm_hw.c
+       src/pcm_io.h
+       src/pcm_plugin.c
+       src/snd_card_plugin.c
+       src/snd_card_plugin.h
+       tests/*
+       utils/tinycap.c
+       utils/tinymix.c
+       utils/tinypcminfo.c
+       utils/tinyplay.c
+       utils/tinywavinfo.c
+Copyright: 2011-2021, The Android Open Source Project
+           2019-2021, The Linux Foundation
+           Qualcomm Technologies, Inc. and/or its subsidiaries
+License: BSD-3-clause
+
 Files: debian/*
-Copyright:
- 2016 Taylor Holberton <taylorcholberton@gmail.com>
- Qualcomm Technologies, Inc. and/or its subsidiaries.
+Copyright: 2016-2017, Taylor Holberton <taylorcholberton@gmail.com>
+           2020, Simon Wilson <ksattic@gmail.com>
+           Qualcomm Technologies, Inc. and/or its subsidiaries
 License: BSD-3-Clause
 
 License: BSD-3-Clause
