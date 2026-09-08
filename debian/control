@@ -8,6 +8,7 @@ Uploaders:
 Build-Depends:
  debhelper-compat (= 13),
  libglib2.0-dev,
+ libgtest-dev,
  meson,
 Vcs-Git: https://github.com/qualcomm-linux/pkg-tinyalsa.git
 Vcs-Browser: https://github.com/qualcomm-linux/pkg-tinyalsa
@@ -69,3 +70,19 @@ Description: small library to interface with ALSA (development files)
   * Provide comprehensive documentation.
  .
  This package provides files necessary to develop programs using the library.
+
+Package: tinyalsa-tests
+Architecture: any
+Section: libdevel
+Depends:
+ libtinyalsa2 (= ${binary:Version}),
+ ${misc:Depends},
+ ${shlibs:Depends},
+Description: small library to interface with ALSA (test suite)
+ The TinyALSA library is a lightweight, bare metal version of the ALSA library.
+ .
+ This package provides the gtest-based test suite used to exercise
+ libtinyalsa2 against real ALSA hardware (a generic card at index 0 and,
+ for the loopback-specific tests, a snd-aloop virtual card at index 2). It
+ is intended to be run via autopkgtest or manually on suitable hardware;
+ most tests will fail, not skip, if no ALSA hardware is present.
