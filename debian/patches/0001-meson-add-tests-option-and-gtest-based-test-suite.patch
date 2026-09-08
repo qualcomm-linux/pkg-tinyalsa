@@ -1,0 +1,55 @@
+Description: Add a "tests" Meson option building a gtest-based test suite
+ This wires up tests/src/*.cc (the existing gtest-based test sources, which
+ upstream's Meson build never builds) into a new "tinyalsa_test" executable,
+ gated behind a "tests" feature option (auto, like the other options in this
+ file). The binary is only installed, not registered as a Meson test(), since
+ most of the suite requires real ALSA hardware (a generic card at index 0
+ and, for loopback-specific tests, a snd-aloop card at index 2) and would
+ fail outright on any buildd. It is packaged as "tinyalsa-tests" and run via
+ autopkgtest instead, where a suitable testbed can be requested.
+Author: Lukas Märdian <lukas.maerdian@oss.qualcomm.com>
+Forwarded: not-needed
+Last-Update: 2026-09-08
+---
+--- a/meson.build
++++ b/meson.build
+@@ -34,5 +34,9 @@ if not get_option('utils').disabled()
+   subdir('utils')
+ endif
+
++if not get_option('tests').disabled()
++  subdir('tests')
++endif
++
+ pkg = import('pkgconfig')
+ pkg.generate(tinyalsa, description: 'TinyALSA Library')
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -4,3 +4,5 @@ option('examples', type: 'feature', value: 'auto', yield: true,
+   description : 'Build examples')
+ option('utils', type: 'feature', value: 'auto', yield: true,
+   description : 'Build utility tools')
++option('tests', type: 'feature', value: 'auto', yield: true,
++  description : 'Build the gtest-based test suite (tinyalsa-tests)')
+--- /dev/null
++++ b/tests/meson.build
+@@ -0,0 +1,19 @@
++add_languages('cpp', native: false, required: get_option('tests'))
++
++gtest_dep = dependency('gtest', main: true, required: get_option('tests'))
++
++if gtest_dep.found()
++  tinyalsa_test = executable('tinyalsa_test',
++    'src/pcm_test.cc',
++    'src/pcm_params_test.cc',
++    'src/mixer_test.cc',
++    'src/pcm_in_test.cc',
++    'src/pcm_out_test.cc',
++    'src/pcm_loopback_test.cc',
++    include_directories: [tinyalsa_includes, include_directories('include')],
++    dependencies: [gtest_dep],
++    link_with: tinyalsa,
++    install: true,
++    install_dir: 'libexec/tinyalsa',
++  )
++endif

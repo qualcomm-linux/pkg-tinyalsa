@@ -1,0 +1,27 @@
+Description: Hide the internal hw_ops/plug_ops symbols from the shared library ABI
+ hw_ops and plug_ops are declared in the private, non-installed src/pcm_io.h
+ header and are only ever used internally by src/pcm.c to select between the
+ real ALSA and plugin backends. They were never intended as public API (they
+ are not declared in any include/tinyalsa/*.h header), but since they lack a
+ "static" or visibility annotation, they end up with default visibility and
+ are exported in libtinyalsa.so's dynamic symbol table, which caused them to
+ be picked up by dpkg-gensymbols into debian/libtinyalsa2.symbols. Mark them
+ hidden so they stop leaking into the ABI, matching mixer_hw_ops/
+ mixer_plug_ops in src/mixer_hw.c/src/mixer_plugin.c, which are already
+ "static" for the same reason.
+Author: Lukas Märdian <lukas.maerdian@oss.qualcomm.com>
+Forwarded: not-needed
+Last-Update: 2026-09-08
+---
+--- a/src/pcm_io.h
++++ b/src/pcm_io.h
+@@ -46,7 +46,7 @@ struct pcm_ops {
+     int (*poll) (void *data, struct pollfd *pfd, nfds_t nfds, int timeout);
+ };
+
+-extern const struct pcm_ops hw_ops;
+-extern const struct pcm_ops plug_ops;
++extern const struct pcm_ops hw_ops __attribute__((visibility("hidden")));
++extern const struct pcm_ops plug_ops __attribute__((visibility("hidden")));
+
+ #endif /* TINYALSA_SRC_PCM_IO_H */
